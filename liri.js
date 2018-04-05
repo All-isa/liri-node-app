@@ -1,12 +1,12 @@
-```js
-require("dotenv").config();
-```
+// js
+// require("dotenv").config();
+
 //variables needed 
 var keys = require("./keys.js");
 var request = require("request");
 var twitter = require("twitter");
 var spotify = require("spotify-web-api-node");
-var client = new Twitter
+var client = new twitter(keys.twitterKeys)
 var fs = require("fs");
 
 var arg = process.argv;
@@ -15,8 +15,8 @@ var command = process.argv[2];
 var x = "";
 
 //so you can use multiple word args
-for(var i = 2; i < arg.length; i++){
-    if(i > 2 && i < arg.length) {
+for(var i = 3; i < arg.length; i++){
+    if(i > 3 && i < arg.length) {
         x = x + "+" + arg[i];
     } else {
         x = x + arg[i];
