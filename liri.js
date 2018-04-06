@@ -52,7 +52,6 @@ switch(command) {
     break;
     }
 
-
 //display recent 20 tweets and when created
     function showTweets() {
         var screenName = {screen_name: 'Allisamichelle'};
@@ -67,7 +66,7 @@ switch(command) {
               fs.appendFile('log.txt', "@Allisamichelle: " + tweets[i].text + " Created At: " + date.substring(0, 19));
               fs.appendFile('log.txt', "-----------------------");
             }
-          }else{
+          } else {
             console.log('Error');
           }
         });
@@ -104,7 +103,7 @@ switch(command) {
 
 //pulls movie info from OMDB and fisplays data
       function omdbData(movie){
-        var omdbURL = 'http://www.omdbapi.com/?t=' + movie + '&plot=short&tomatoes=true';
+        var omdbURL = 'http://www.omdbapi.com/?t=' + movie + '&plot=short&apikey=trilogy';
       
         request(omdbURL, function (error, response, body){
           if(!error && response.statusCode == 200){
@@ -134,12 +133,18 @@ switch(command) {
           } else{
             console.log('Error')
           }
+          if(movie === "Mr. Nobody"){
+            console.log("-----------------------");
+            console.log("If you haven't watched 'Mr. Nobody,' then you should: http://www.imdb.com/title/tt0485947/");
+            console.log("It's on Netflix!");
+    
             //adds text to log.txt
             fs.appendFile('log.txt', "-----------------------");
             fs.appendFile('log.txt', "If you haven't watched 'Mr. Nobody,' then you should: http://www.imdb.com/title/tt0485947/");
             fs.appendFile('log.txt', "It's on Netflix!");
           }
-        )};
+        }
+    )};
       
 //  
       function doThing(){
